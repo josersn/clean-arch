@@ -24,6 +24,12 @@ class AccountRepository implements IAccountRepository {
         return account;
     }
 
+    async find(id: string): Promise<Account | undefined> {
+        const account = this.accounts.find(item => item.id === id);
+
+        return account;
+    }
+
     async findByCNPJ(cnpj: string): Promise<Account | undefined> {
         const account = this.accounts.find(item => item.cnpj === cnpj);
 
