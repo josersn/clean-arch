@@ -4,14 +4,12 @@ import { CreateAccountService } from "./CreateAccountService";
 
 let rut: AccountRepository;
 let sut: CreateAccountService;
-let accountValidator: AccountValidator;
 
 describe('Create a company account use case.', () => {
 
   beforeEach(() => {
-    accountValidator = new AccountValidator();
     rut = new AccountRepository();       // repository under test
-    sut = new CreateAccountService(rut, accountValidator); // service under test
+    sut = new CreateAccountService(rut); // service under test
   })
 
   it('Should be able to a new create account.', async () => {

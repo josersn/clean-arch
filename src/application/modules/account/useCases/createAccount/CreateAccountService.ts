@@ -5,9 +5,10 @@ import { IAccountRepository } from "../../repositories/interfaces/IAccountReposi
 
 class CreateAccountService {
 
+    private helper: AccountValidator = new AccountValidator();
+
     constructor(
-        private repository: IAccountRepository,
-        private helper: AccountValidator
+        private repository: IAccountRepository
     ) { }
 
     async execute({ name, cnpj, description, logo, address, revenue }: ICreatedAccount): Promise<Account> {
