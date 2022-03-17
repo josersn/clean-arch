@@ -8,7 +8,7 @@ let rut: AccountRepository;
 let accountService: CreateAccountService;
 let getAccountService: GetAccountService;
 
-beforeAll(() => {
+beforeEach(() => {
     rut = new AccountRepository();
     sut = new EditAccountService(rut);
     accountService = new CreateAccountService(rut);

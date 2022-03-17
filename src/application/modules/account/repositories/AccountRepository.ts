@@ -38,7 +38,7 @@ class AccountRepository implements IAccountRepository {
     }
 
     async listAll(): Promise<Account[]> {
-        return this.accounts;
+        return this.accounts.filter(item => item.available === 1);
     }
 
     async update(id: string, data: Account): Promise<Account> {
