@@ -8,6 +8,12 @@ class EditAccountService {
 
     async execute(id: string, data: ICreatedAccount): Promise<Account | undefined> {
 
+        const account = await this.repository.find(id);;
+
+        if(!account) {
+            throw  new Error("Account not exists");
+        }
+
         const accountEdited = await this.repository.update(id, data);
 
         return accountEdited;
