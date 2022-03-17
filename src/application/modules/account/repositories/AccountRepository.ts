@@ -36,6 +36,10 @@ class AccountRepository implements IAccountRepository {
         return account;
 
     }
+
+    async listAll(): Promise<Account[]> {
+        return this.accounts;
+    }
 }
 
 export {
