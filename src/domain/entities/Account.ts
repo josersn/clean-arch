@@ -1,21 +1,21 @@
 class Account {
-    id?: string;
+    id: string;
 
-    name!: string;
+    name: string;
 
-    cnpj!: string;
+    cnpj: string;
 
-    description!: string;
+    description: string;
 
-    logo!: string;
+    logo: string;
 
-    address!: string;
+    address: string;
 
-    revenue!: number;
+    revenue: number;
 
-    available?: number;
+    available: number;
 
-    created_at?: Date;
+    created_at: Date;
 
     constructor() {
         if (!this.id) {
