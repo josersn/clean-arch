@@ -38,7 +38,7 @@ describe('Edit Account company service ', () => {
 
         const account = await accountService.execute(companyData);
         const accountEdited = await sut.execute(account.id, newCompanyData);
-        const accountFound = await getAccountService.execute(accountEdited?.id);
+        const accountFound = await getAccountService.execute(accountEdited.id);
 
         expect(accountFound?.name).toBe("BanQi");
         expect(accountFound).toEqual(newCompanyData);

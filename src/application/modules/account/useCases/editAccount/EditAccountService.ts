@@ -6,7 +6,7 @@ class EditAccountService {
 
     constructor(private repository: IAccountRepository) { }
 
-    async execute(id: string, data: ICreatedAccount): Promise<Account | undefined> {
+    async execute(id: string, data: ICreatedAccount): Promise<Account> {
 
         const account = await this.repository.find(id);;
 
