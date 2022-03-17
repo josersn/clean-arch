@@ -31,4 +31,8 @@ describe('Delete a company account service', () => {
         expect(deletedAccount.available).toEqual(0);
 
     });
+
+    it('Should not be able to delete a non exists account', async () => {
+        await expect(sut.execute('MOCK_ID')).rejects.toThrowError(Error("Account not exists"));
+    })
 })

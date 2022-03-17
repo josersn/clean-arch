@@ -7,6 +7,12 @@ class DeleteAccountService {
 
     async execute(id: string): Promise<Account> {
 
+        const account = await this.repository.find(id);
+
+        if (!account) {
+            throw new Error("Account not exists");
+        }
+
         const accountEdited = this.repository.delete(id);
 
         return accountEdited;
