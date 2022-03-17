@@ -1,4 +1,4 @@
-import { Account } from "../../../../../domain/entities/Account";
+import { Account } from "../../entities/Account";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
 
 class GetAccountService {

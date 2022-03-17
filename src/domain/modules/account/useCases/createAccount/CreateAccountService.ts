@@ -1,4 +1,4 @@
-import { Account } from "../../../../../domain/entities/Account";
+import { Account } from "../../entities/Account";
 import { ICreatedAccount } from "../../dtos/ICreateAccount";
 import { AccountValidator } from "../../helpers/AccountValidators";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
