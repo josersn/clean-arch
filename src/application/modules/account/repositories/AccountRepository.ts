@@ -3,6 +3,7 @@ import { ICreatedAccount } from "../dtos/ICreateAccount";
 import { IAccountRepository } from "./interfaces/IAccountRepository";
 
 class AccountRepository implements IAccountRepository {
+
     public accounts: Account[] = [];
 
     async create({ name, description, address, cnpj, logo, revenue }: ICreatedAccount): Promise<Account> {
@@ -46,6 +47,14 @@ class AccountRepository implements IAccountRepository {
         this.accounts[accountIndex] = data;
 
         return data;
+    }
+
+    async delete(id: string): Promise<Account> {
+        const accountIndex = this.accounts.findIndex(account => account.id === id);
+
+        this.accounts[accountIndex].available = 0;
+
+        return this.accounts[accountIndex];
     }
 }
 

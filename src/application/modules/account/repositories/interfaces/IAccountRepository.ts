@@ -6,7 +6,8 @@ interface IAccountRepository {
     findByCNPJ(cnpj: string): Promise<Account | undefined>;
     find(id: string | undefined): Promise<Account | undefined>;
     listAll(): Promise<Account[]>;
-    update(id: string, data: ICreatedAccount): Promise<Account>
+    update(id: string, data: ICreatedAccount): Promise<Account>;
+    delete(id: string): Promise<Account>;
 }
 
 export { IAccountRepository };
