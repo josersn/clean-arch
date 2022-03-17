@@ -13,6 +13,8 @@ class Account {
 
     revenue!: number;
 
+    available?: number;
+
     created_at?: Date;
 
     constructor() {
@@ -22,6 +24,7 @@ class Account {
             const tail = Math.random().toString(36).substring(2);
 
             this.id = head + tail;
+            this.available = 1;
         }
     }
 
