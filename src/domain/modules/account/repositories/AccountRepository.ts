@@ -53,7 +53,6 @@ class AccountRepository implements IAccountRepository {
 
     async listAll(): Promise<Account[]> {
         const accounts = this.accounts.filter(item => item.available === 1);
-        console.log(accounts);
         
         return accounts;
     }
