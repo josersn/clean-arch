@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 import { AccountRepository } from "../../../../../domain/modules/account/repositories/AccountRepository";
 import { CreateAccountService } from "../../../../../domain/modules/account/useCases/createAccount/CreateAccountService";
 import { DeleteAccountService } from "../../../../../domain/modules/account/useCases/deleteAccount/DeleteAccountService";
+import { EditAccountService } from "../../../../../domain/modules/account/useCases/editAccount/EditAccountService";
 import { GetAccountService } from "../../../../../domain/modules/account/useCases/getAccount/GetAccountService";
 import { ListAccountService } from "../../../../../domain/modules/account/useCases/listAccounts/ListAccountService";
 import { AppError } from "../../error/AppError";
@@ -61,7 +62,29 @@ class AccountController {
         return res.status(201).json(account);
     }
 
-    async deleteAccount (req: Request, res: Response): Promise<Response> {
+    async updateAccount(req: Request, res: Response): Promise<Response> {
+
+        const requiredFields = ["name", "cnpj", "description", "logo", "address", "revenue"];
+
+        for (const field of requiredFields) {
+            if (!req.body[field]) {
+                throw new AppError(`Missing param ${field}`)
+            }
+        }
+
+        const { id, name, cnpj, description, logo, address, revenue } = req.body;
+
+        const repository = AccountRepository.getInstance();
+        const service = new EditAccountService(repository);
+
+        const account = await service.execute(id, {
+            name, cnpj, description, logo, address, revenue
+        })
+
+        return res.status(200).json(account);
+    }
+
+    async deleteAccount(req: Request, res: Response): Promise<Response> {
         const requiredFields = ["id"];
 
         for (const field of requiredFields) {
@@ -71,7 +94,7 @@ class AccountController {
         }
 
         const { id } = req.params;
-        
+
         const repository = AccountRepository.getInstance();
         const service = new DeleteAccountService(repository);
 
