@@ -1,3 +1,5 @@
+import { uuid } from "../../../helpers/uuid";
+
 class Account {
     id: string;
 
@@ -19,11 +21,7 @@ class Account {
 
     constructor() {
         if (!this.id) {
-
-            const head = Date.now().toString(36);
-            const tail = Math.random().toString(36).substring(2);
-
-            this.id = head + tail;
+            this.id = uuid();
             this.available = 1;
         }
     }
