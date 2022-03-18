@@ -85,7 +85,7 @@ class AccountController {
             logo,
             address,
             revenue
-        })
+        });
 
         return res.status(200).json(account);
     }

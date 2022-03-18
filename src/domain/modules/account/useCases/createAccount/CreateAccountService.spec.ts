@@ -64,7 +64,7 @@ describe('Create a company account use case.', () => {
       revenue: 100000
     }
 
-    await expect(sut.execute(companyData)).rejects.toBeInstanceOf(AppError)
+    await expect(sut.execute(companyData)).rejects.toBeInstanceOf(AppError);
 
   })
 
