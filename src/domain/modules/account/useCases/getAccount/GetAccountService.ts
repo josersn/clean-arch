@@ -1,4 +1,4 @@
-import { AppError } from "../../../../../presentation/infra/http/error/AppError";
+import { AppError } from "../../../../../infrastructure/http/error/AppError";
 import { Account } from "../../entities/Account";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
 

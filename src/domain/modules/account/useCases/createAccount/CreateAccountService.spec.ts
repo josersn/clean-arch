@@ -1,4 +1,4 @@
-import { AppError } from "../../../../../presentation/infra/http/error/AppError";
+import { AppError } from "../../../../../infrastructure/http/error/AppError";
 import { AccountValidator } from "../../helpers/AccountValidators";
 import { AccountRepository } from "../../repositories/AccountRepository";
 import { CreateAccountService } from "./CreateAccountService";

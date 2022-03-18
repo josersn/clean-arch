@@ -1,7 +1,7 @@
 import { Account } from "../../entities/Account"
 import { ICreatedAccount } from "../../dtos/ICreateAccount";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
-import { AppError } from "../../../../../presentation/infra/http/error/AppError";
+import { AppError } from "../../../../../infrastructure/http/error/AppError";
 
 class EditAccountService {
 

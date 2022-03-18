@@ -1,10 +1,10 @@
 import { Response, Request } from "express";
-import { AccountRepository } from "../../../../../domain/modules/account/repositories/AccountRepository";
-import { CreateAccountService } from "../../../../../domain/modules/account/useCases/createAccount/CreateAccountService";
-import { DeleteAccountService } from "../../../../../domain/modules/account/useCases/deleteAccount/DeleteAccountService";
-import { EditAccountService } from "../../../../../domain/modules/account/useCases/editAccount/EditAccountService";
-import { GetAccountService } from "../../../../../domain/modules/account/useCases/getAccount/GetAccountService";
-import { ListAccountService } from "../../../../../domain/modules/account/useCases/listAccounts/ListAccountService";
+import { AccountRepository } from "../../../../domain/modules/account/repositories/AccountRepository";
+import { CreateAccountService } from "../../../../domain/modules/account/useCases/createAccount/CreateAccountService";
+import { DeleteAccountService } from "../../../../domain/modules/account/useCases/deleteAccount/DeleteAccountService";
+import { EditAccountService } from "../../../../domain/modules/account/useCases/editAccount/EditAccountService";
+import { GetAccountService } from "../../../../domain/modules/account/useCases/getAccount/GetAccountService";
+import { ListAccountService } from "../../../../domain/modules/account/useCases/listAccounts/ListAccountService";
 import { AppError } from "../../error/AppError";
 
 class AccountController {
