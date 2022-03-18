@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import { AccountRepository } from "../../../../../domain/modules/account/repositories/AccountRepository";
 import { CreateAccountService } from "../../../../../domain/modules/account/useCases/createAccount/CreateAccountService";
+import { AppError } from "../../error/AppError";
 
 class AccountController {
     async createAccount(req: Request, res: Response): Promise<Response> {
@@ -9,7 +10,7 @@ class AccountController {
 
         for (const field of requiredFields) {
             if (!req.body[field]) {
-                return res.status(400).json(`Missing param ${field}`);
+                throw new AppError(`Missing param ${field}`)
             }
         }
 
@@ -24,6 +25,7 @@ class AccountController {
         });
 
         return res.status(201).json(account);
+
 
     }
 }
