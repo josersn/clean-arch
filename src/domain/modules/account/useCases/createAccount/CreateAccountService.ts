@@ -17,7 +17,7 @@ class CreateAccountService {
         const accountAlreadyExists = await this.repository.findByCNPJ(cnpj);
 
         if (accountAlreadyExists) {
-            throw new AppError("User Already Exists");
+            throw new AppError("Company Already Exists");
         }
 
         const cnpjIsValid = this.helper.cnpjIsValid(cnpj);
