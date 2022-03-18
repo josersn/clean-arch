@@ -13,9 +13,9 @@ class Account {
 
     revenue: number;
 
-    available: number;
+    available?: number;
 
-    created_at: Date;
+    created_at?: Date;
 
     constructor() {
         if (!this.id) {

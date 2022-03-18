@@ -77,8 +77,14 @@ class AccountController {
         const repository = AccountRepository.getInstance();
         const service = new EditAccountService(repository);
 
-        const account = await service.execute(id, {
-            name, cnpj, description, logo, address, revenue
+        const account = await service.execute({
+            id,
+            name,
+            cnpj,
+            description,
+            logo,
+            address,
+            revenue
         })
 
         return res.status(200).json(account);

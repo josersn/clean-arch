@@ -57,8 +57,8 @@ class AccountRepository implements IAccountRepository {
         return accounts;
     }
 
-    async update(id: string, data: Account): Promise<Account> {
-        const accountIndex = this.accounts.findIndex(account => account.id === id);
+    async update(data: Account): Promise<Account> {
+        const accountIndex = this.accounts.findIndex(account => account.id === data.id);
 
         this.accounts[accountIndex] = data;
         this.accounts[accountIndex].available = 1;

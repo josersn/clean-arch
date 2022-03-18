@@ -34,6 +34,7 @@ describe('Edit Account company service ', () => {
         }
 
         const newCompanyData = {
+            id: "MOCK_ID",
             name: "BanQi",
             cnpj: "04221023000500",
             description: "A digital bank in Via's group",
@@ -43,7 +44,7 @@ describe('Edit Account company service ', () => {
         }
 
         const account = await accountService.execute(companyData);
-        const accountEdited = await sut.execute(account.id, newCompanyData);
+        const accountEdited = await sut.execute(newCompanyData);
 
         expect(accountEdited.name).toBe("BanQi");
         expect(accountEdited).toEqual(newCompanyData);
@@ -53,20 +54,23 @@ describe('Edit Account company service ', () => {
     it('Should not be able to edit a non exist account', async () => {
 
         const newCompanyData = {
+            id: "MOCK_ID",
             name: "BanQi",
             cnpj: "04221023000500",
             description: "A digital bank in Via's group",
             logo: "https://banqi.com.br/assets/img/ui/logo-internas.svg",
             address: "Av. Conde Francisco Matarazzo",
-            revenue: 100000
+            revenue: 100000,
+            
         }
 
-        await expect(sut.execute('MOCK_ID', newCompanyData)).rejects.toBeInstanceOf(AppError);
+        await expect(sut.execute(newCompanyData)).rejects.toBeInstanceOf(AppError);
     })
 
     it('Should not be able to edit a unavailable account', async () => {
 
         const newCompanyData = {
+            id: "MOCK_ID",
             name: "BanQi",
             cnpj: "04221023000500",
             description: "A digital bank in Via's group",
@@ -78,6 +82,6 @@ describe('Edit Account company service ', () => {
         const account = await createAccountService.execute(newCompanyData);
         await deleteAccountService.execute(account.id);
 
-        await expect(sut.execute(account.id, newCompanyData)).rejects.toBeInstanceOf(AppError);
+        await expect(sut.execute(newCompanyData)).rejects.toBeInstanceOf(AppError);
     })
 })

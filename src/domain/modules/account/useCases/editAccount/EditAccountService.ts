@@ -7,9 +7,9 @@ class EditAccountService {
 
     constructor(private repository: IAccountRepository) { }
 
-    async execute(id: string, data: ICreatedAccount): Promise<Account> {
+    async execute(data: Account): Promise<Account> {
 
-        const account = await this.repository.find(id);
+        const account = await this.repository.find(data.id);
 
         if (!account) {
             throw new AppError("Account not exists");
@@ -19,7 +19,7 @@ class EditAccountService {
             throw new AppError("Account can not edit");
         }
         
-        const accountEdited = await this.repository.update(id, data);
+        const accountEdited = await this.repository.update(data);
 
         return accountEdited;
     }
