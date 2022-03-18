@@ -5,7 +5,7 @@ Hello there! this application has the conceptions of SOLID and clean architectur
 * [Express](https://expressjs.com/pt-br/)
 * [Mongoose](https://github.com/davidbanham/express-async-errors#readme)
 
-## Installation and start project
+## Installation and start project and doc UI
 
 ```
 yarn && yarn dev
@@ -17,7 +17,7 @@ You should get
 ```
 Server is running
 ```
-Access http://localhost:8080/
+Access http://localhost:8080/ and Access http://localhost:8080/docs
 
 ## Testing
 
@@ -28,11 +28,13 @@ npm test
 ```
 ### Routes
 
-→ GET -> http://localhost:8080/account  | Lista todas contas.
-→ GET -> http://localhost:8080/account/:id  | Lista uma conta.
-→ POST -> http://localhost:8080/account | Cria uma conta.
-→ DELETE -> http://localhost:8080/account/:id | Desativa uma conta.
-→ PUT -> http://localhost:8080/account/:id | Atualiza uma conta.
+```
+→ GET -> http://localhost:8080/account  | List all accounts.
+→ GET -> http://localhost:8080/account/:id  | list  a account.
+→ POST -> http://localhost:8080/account | Create account.
+→ DELETE -> http://localhost:8080/account/:id | Turn off a Account.
+→ PUT -> http://localhost:8080/account/:id | update Account.
+```
 
 ## Clean Architecture
 
