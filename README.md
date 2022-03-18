@@ -4,6 +4,7 @@ Hello there! this application has the conceptions of SOLID and clean architectur
 ## Production dependency
 * [Express](https://expressjs.com/pt-br/)
 * [Mongoose](https://github.com/davidbanham/express-async-errors#readme)
+* [swagger](https://swagger.io/)
 
 ## Installation and start project and doc UI
 
