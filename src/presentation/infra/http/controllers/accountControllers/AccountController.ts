@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import { AccountRepository } from "../../../../../domain/modules/account/repositories/AccountRepository";
 import { CreateAccountService } from "../../../../../domain/modules/account/useCases/createAccount/CreateAccountService";
+import { DeleteAccountService } from "../../../../../domain/modules/account/useCases/deleteAccount/DeleteAccountService";
 import { GetAccountService } from "../../../../../domain/modules/account/useCases/getAccount/GetAccountService";
 import { ListAccountService } from "../../../../../domain/modules/account/useCases/listAccounts/ListAccountService";
 import { AppError } from "../../error/AppError";
@@ -58,6 +59,25 @@ class AccountController {
         const account = service.execute(id);
 
         return res.status(201).json(account);
+    }
+
+    async deleteAccount (req: Request, res: Response): Promise<Response> {
+        const requiredFields = ["id"];
+
+        for (const field of requiredFields) {
+            if (!req.params[field]) {
+                throw new AppError(`Missing param ${field}`)
+            }
+        }
+
+        const { id } = req.params;
+        
+        const repository = AccountRepository.getInstance();
+        const service = new DeleteAccountService(repository);
+
+        await service.execute(id);
+
+        return res.status(200).send();
     }
 }
 
