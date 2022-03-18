@@ -45,6 +45,7 @@ class AccountRepository implements IAccountRepository {
         const accountIndex = this.accounts.findIndex(account => account.id === id);
 
         this.accounts[accountIndex] = data;
+        this.accounts[accountIndex].available = 1;
 
         return data;
     }
