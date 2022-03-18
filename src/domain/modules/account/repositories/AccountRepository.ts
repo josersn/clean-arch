@@ -1,6 +1,7 @@
 import { Account } from "../entities/Account";
 import { ICreatedAccount } from "../dtos/ICreateAccount";
 import { IAccountRepository } from "./interfaces/IAccountRepository";
+import { constants } from "../../../constants";
 
 class AccountRepository implements IAccountRepository {
 
@@ -52,8 +53,8 @@ class AccountRepository implements IAccountRepository {
     }
 
     async listAll(): Promise<Account[]> {
-        const accounts = this.accounts.filter(item => item.available === 1);
-        
+        const accounts = this.accounts.filter(item => item.available === constants.USER_AVAILABLE);
+
         return accounts;
     }
 
@@ -61,7 +62,7 @@ class AccountRepository implements IAccountRepository {
         const accountIndex = this.accounts.findIndex(account => account.id === data.id);
 
         this.accounts[accountIndex] = data;
-        this.accounts[accountIndex].available = 1;
+        this.accounts[accountIndex].available = constants.USER_AVAILABLE;
 
         return data;
     }
@@ -69,7 +70,7 @@ class AccountRepository implements IAccountRepository {
     async delete(id: string): Promise<Account> {
         const accountIndex = this.accounts.findIndex(account => account.id === id);
 
-        this.accounts[accountIndex].available = 0;
+        this.accounts[accountIndex].available = constants.USER_UNAVAILABLE;
 
         return this.accounts[accountIndex];
     }
