@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { Account } from "../../entities/Account";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
 
@@ -10,7 +11,7 @@ class DeleteAccountService {
         const account = await this.repository.find(id);
 
         if (!account) {
-            throw new Error("Account not exists");
+            throw new AppError("Account not exists");
         }
 
         const accountEdited = this.repository.delete(id);

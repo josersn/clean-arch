@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { AccountRepository } from "../../repositories/AccountRepository";
 import { CreateAccountService } from "../createAccount/CreateAccountService";
 import { DeleteAccountService } from "./DeleteAccountService";
@@ -33,6 +34,6 @@ describe('Delete a company account service', () => {
     });
 
     it('Should not be able to delete a non exists account', async () => {
-        await expect(sut.execute('MOCK_ID')).rejects.toThrowError(Error("Account not exists"));
+        await expect(sut.execute('MOCK_ID')).rejects.toBeInstanceOf(AppError);
     })
 })

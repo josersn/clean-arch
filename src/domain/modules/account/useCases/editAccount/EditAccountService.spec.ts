@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { AccountRepository } from "../../repositories/AccountRepository";
 import { CreateAccountService } from "../createAccount/CreateAccountService";
 import { DeleteAccountService } from "../deleteAccount/DeleteAccountService";
@@ -60,7 +61,7 @@ describe('Edit Account company service ', () => {
             revenue: 100000
         }
 
-        await expect(sut.execute('MOCK_ID', newCompanyData)).rejects.toThrowError("Account not exists");
+        await expect(sut.execute('MOCK_ID', newCompanyData)).rejects.toBeInstanceOf(AppError);
     })
 
     it('Should not be able to edit a unavailable account', async () => {
@@ -77,6 +78,6 @@ describe('Edit Account company service ', () => {
         const account = await createAccountService.execute(newCompanyData);
         await deleteAccountService.execute(account.id);
 
-        await expect(sut.execute(account.id, newCompanyData)).rejects.toThrowError("Account can not edit");
+        await expect(sut.execute(account.id, newCompanyData)).rejects.toBeInstanceOf(AppError);
     })
 })

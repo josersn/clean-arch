@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { Account } from "../../entities/Account";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
 
@@ -9,7 +10,7 @@ class GetAccountService {
         const account = await this.repository.find(id);
 
         if(!account?.available) {
-            throw new Error("Account not available");
+            throw new AppError("Account not available");
         }
 
         return account;

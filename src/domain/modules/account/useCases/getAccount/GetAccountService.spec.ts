@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { AccountRepository } from "../../repositories/AccountRepository";
 import { CreateAccountService } from "../createAccount/CreateAccountService";
 import { DeleteAccountService } from "../deleteAccount/DeleteAccountService";
@@ -52,7 +53,7 @@ describe('List a Company Account Service', () => {
 
         const account = await createAccountService.execute(companyData);
         await deleteAccountService.execute(account.id);
-        await expect(sut.execute(account.id)).rejects.toThrowError("Account not available");
+        await expect(sut.execute(account.id)).rejects.toBeInstanceOf(AppError);
 
     })
 })

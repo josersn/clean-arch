@@ -1,3 +1,4 @@
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 import { AccountValidator } from "../../helpers/AccountValidators";
 import { AccountRepository } from "../../repositories/AccountRepository";
 import { CreateAccountService } from "./CreateAccountService";
@@ -48,7 +49,7 @@ describe('Create a company account use case.', () => {
       logo: "http://www.setcesp.org.br/upload/ckeditor/files/SetcespOnline/Associados/VVLog_-_viavarejo.com.brvvlog.png",
       address: "Av. Conde Francisco Matarazzo",
       revenue: 100000
-    })).rejects.toThrowError(Error("User Already Exists"));
+    })).rejects.toBeInstanceOf(AppError);
 
   });
 
@@ -63,7 +64,7 @@ describe('Create a company account use case.', () => {
       revenue: 100000
     }
 
-    await expect(sut.execute(companyData)).rejects.toThrowError("Company CPNJ is invalid")
+    await expect(sut.execute(companyData)).rejects.toBeInstanceOf(AppError)
 
   })
 

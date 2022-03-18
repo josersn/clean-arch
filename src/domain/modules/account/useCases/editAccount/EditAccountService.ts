@@ -1,6 +1,7 @@
 import { Account } from "../../entities/Account"
 import { ICreatedAccount } from "../../dtos/ICreateAccount";
 import { IAccountRepository } from "../../repositories/interfaces/IAccountRepository";
+import { AppError } from "../../../../../presentation/infra/http/error/AppError";
 
 class EditAccountService {
 
@@ -11,11 +12,11 @@ class EditAccountService {
         const account = await this.repository.find(id);
 
         if (!account) {
-            throw new Error("Account not exists");
+            throw new AppError("Account not exists");
         }
 
         if (!account.available) {
-            throw new Error("Account can not edit");
+            throw new AppError("Account can not edit");
         }
         
         const accountEdited = await this.repository.update(id, data);
