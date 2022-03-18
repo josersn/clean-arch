@@ -25,7 +25,7 @@ class AccountRepository implements IAccountRepository {
     }
 
     async find(id: string): Promise<Account | undefined> {
-        const account = this.accounts.find(item => item.id === id);
+        const account = this.accounts.find(item => item.id);
 
         return account;
     }
