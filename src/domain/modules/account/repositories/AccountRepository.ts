@@ -4,7 +4,21 @@ import { IAccountRepository } from "./interfaces/IAccountRepository";
 
 class AccountRepository implements IAccountRepository {
 
-    public accounts: Account[] = [];
+    public accounts: Account[];
+
+    private static selfInstance: AccountRepository;
+
+    constructor() {
+        this.accounts = []
+    }
+
+    public static getInstance(): AccountRepository {
+        if (!AccountRepository.selfInstance) {
+            AccountRepository.selfInstance = new AccountRepository();
+        }
+
+        return AccountRepository.selfInstance;
+    }
 
     async create({ name, description, address, cnpj, logo, revenue }: ICreatedAccount): Promise<Account> {
         const account = new Account();
@@ -38,7 +52,10 @@ class AccountRepository implements IAccountRepository {
     }
 
     async listAll(): Promise<Account[]> {
-        return this.accounts.filter(item => item.available === 1);
+        const accounts = this.accounts.filter(item => item.available === 1);
+        console.log(accounts);
+        
+        return accounts;
     }
 
     async update(id: string, data: Account): Promise<Account> {
